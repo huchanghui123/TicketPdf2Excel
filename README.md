@@ -9,9 +9,9 @@ EXCEL生成使用EPPLUS组件
 
 发票如图：
 
-![ppp](.\ppp.png)
+![ppp](ppp.png)
 
 软件截图:
 
-![exe](.\exe.png)
+![exe](exe.png)
 
