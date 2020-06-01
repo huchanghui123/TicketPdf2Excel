@@ -109,7 +109,7 @@ namespace Pdf2Excel
             {
                 Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
                 {
-                    MessageBox.Show("添加数据失败，请先关闭Excel!", "提示", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("添加数据失败，请先关闭"+ ExcelNamed, "提示", MessageBoxButton.OK, MessageBoxImage.Information);
                 }));
                 return;
             }
@@ -138,7 +138,7 @@ namespace Pdf2Excel
                 }
             }
 
-            if (excelData.IndexOf(ticket.Code) > 0)
+            if (excelData.IndexOf(ticket.Number) > 0)
             {
                 Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
                 {

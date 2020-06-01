@@ -81,7 +81,7 @@ namespace Pdf2Excel
                 MessageBox.Show(ex.ToString());
                 return;
             }
-            //StreamWriter sw = File.AppendText(@"C:\\Users\\16838\\Desktop\\test.txt");
+            //StreamWriter sw = File.AppendText(@"C:\\Users\\16838\\Desktop\\test2323.txt");
             //sw.Write(content.ToString());
             //sw.Flush();
             //sw.Close();
@@ -95,6 +95,7 @@ namespace Pdf2Excel
             }
             foreach (String str in contentArry)
             {
+                //Console.WriteLine("{0}, {1}", row, str);
                 if (str.IndexOf("发票代码") > -1)
                 {
                     index_code = row;
@@ -133,6 +134,8 @@ namespace Pdf2Excel
             {
                 pro_list.Add(i);
             }
+            //Console.WriteLine("index_code:{0} index_number:{1} index_date:{2} index_name:{3}",
+            //    index_code, index_number, index_date, index_name);
 
             ticket = PdfFormat.GetTicketItem(contentArry, arr, pro_list);
             Console.WriteLine(ticket.ToString());
