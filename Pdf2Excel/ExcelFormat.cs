@@ -74,7 +74,7 @@ namespace Pdf2Excel
 
                 workSheet.Cells[2, 1].Value = ticket.Code;
                 workSheet.Cells[2, 2].Value = ticket.Number;
-                workSheet.Cells[2, 3].Value = ticket.Date;
+                workSheet.Cells[2, 3].Value = ticket.Date.Insert(4, "年").Insert(7, "月").Insert(10, "日");
                 workSheet.Cells[2, 4].Value = ticket.Project.ToString();
                 workSheet.Cells[2, 5].Value = ticket.Sum;
                 workSheet.Cells[2, 6].Value = ticket.Company;
@@ -159,7 +159,7 @@ namespace Pdf2Excel
                 //将单元格数据添加到列表
                 worksheet.Cells[row + 1, 1].Value = ticket.Code;
                 worksheet.Cells[row + 1, 2].Value = ticket.Number;
-                worksheet.Cells[row + 1, 3].Value = ticket.Date;
+                worksheet.Cells[row + 1, 3].Value = ticket.Date.Insert(4, "年").Insert(7, "月").Insert(10, "日");
                 worksheet.Cells[row + 1, 4].Value = ticket.Project.ToString();
                 worksheet.Cells[row + 1, 5].Value = ticket.Sum;
                 worksheet.Cells[row + 1, 6].Value = ticket.Company;

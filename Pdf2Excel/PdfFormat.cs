@@ -47,7 +47,7 @@ namespace Pdf2Excel
 
             item.Code = tickets_code;
             item.Number = tickets_number;
-            item.Date = tickets_date;
+            item.Date = date_str;
 
             var product = new StringBuilder();
             foreach (var index in pro_list)
