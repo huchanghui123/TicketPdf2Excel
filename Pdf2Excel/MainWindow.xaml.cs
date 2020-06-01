@@ -136,9 +136,10 @@ namespace Pdf2Excel
 
             ticket = PdfFormat.GetTicketItem(contentArry, arr, pro_list);
             Console.WriteLine(ticket.ToString());
+            PdfFormat.RenamePdf(ticket, fileName);
 
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
-            ExcelFormat.CreateSinglelExcel(ticket);
+            //ExcelFormat.CreateSinglelExcel(ticket);
             string filePath = AppDomain.CurrentDomain.BaseDirectory + ExcelFormat.ExcelNamed;
             if (File.Exists(filePath))
             {

@@ -1,6 +1,7 @@
 ﻿using Spire.Pdf;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -82,6 +83,20 @@ namespace Pdf2Excel
             item.Company = tickets_company;
 
             return item;
+        }
+
+        public static void RenamePdf(TicketItem ticket, String filePath)
+        {
+            string filename = String.Format("{0}-{1}-{2}.pdf", ticket.Date, ticket.Sum.Substring(1), ticket.Company);
+            //保存Excel文件
+            string newfilepath = AppDomain.CurrentDomain.BaseDirectory + filename;
+            FileInfo fi = new FileInfo(filePath);
+            //fi.MoveTo(newfilepath);
+            if (!System.IO.File.Exists(newfilepath))
+            {
+                fi.CopyTo(newfilepath);
+            }
+            
         }
     }
 }
