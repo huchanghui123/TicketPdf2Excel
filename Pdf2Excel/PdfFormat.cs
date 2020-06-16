@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Windows;
 
 namespace Pdf2Excel
 {
@@ -53,17 +54,41 @@ namespace Pdf2Excel
             var product = new StringBuilder();
             foreach (var index in pro_list)
             {
+                //整行货品数据
                 String content = strArr[index];
                 Console.WriteLine("货品："+content);
                 String[] project_info = { "货品名称 型号"};
-                //有时候解析出的行全是空格
+                //有时候解析出的行全是空格，这里要做下非空判断
                 String check = Regex.Replace(content, @"\s", "");
                 if(check.Length > 0)
                 {
+                    //用空行切割数据
                     project_info = content.ToString().Split(new string[] { " " },
                         StringSplitOptions.RemoveEmptyEntries);
-                    //Console.WriteLine("project_info.Length：" + project_info.Length + " content.Length:"+ content.Length + " check:"+ check);
-                    product.Append(project_info[0]).Append(" ").Append(project_info[1]).Append("\r\n");
+                    //Console.WriteLine("project Length：" + project_info.Length + " check:"+ check);
+                    var str = string.Join("  ", project_info);
+                    //Console.WriteLine("str---------->"+ str);
+                    try
+                    {
+                        //if (project_info.Length > 1)
+                        //{
+                        //    product.Append(project_info[0]).Append(" ").Append(project_info[1]).Append("\r\n");
+                        //}
+                        //else
+                        //{
+                        //    product.Append(project_info[0]).Append("\r\n");
+                        //}
+                        //货品数据数据各pdf规格太乱，不再特意去添加规格型号
+                        if (project_info.Length > 0)
+                        {
+                            product.Append(str).Append("\r\n");
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e.ToString());
+                        MessageBox.Show(e.ToString(), "错误提示", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
                 }
             }
             if (product.Length>2)
@@ -106,7 +131,6 @@ namespace Pdf2Excel
             {
                 fi.CopyTo(newfilepath);
             }
-            
         }
     }
 }
