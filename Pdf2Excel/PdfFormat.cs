@@ -122,7 +122,8 @@ namespace Pdf2Excel
 
         public static void RenamePdf(TicketItem ticket, String filePath)
         {
-            string filename = String.Format("{0}-{1}-{2}.pdf", ticket.Date, ticket.Sum.Substring(1), ticket.Company);
+            string filename = String.Format("{0}-{1}-{2}-{3}.pdf", ticket.Date, 
+                ticket.Sum.Substring(1), ticket.Number, ticket.Company);
             //保存Excel文件
             string newfilepath = AppDomain.CurrentDomain.BaseDirectory + filename;
             FileInfo fi = new FileInfo(filePath);

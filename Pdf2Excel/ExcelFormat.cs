@@ -44,7 +44,8 @@ namespace Pdf2Excel
                 workSheet.Cells[workSheet.Dimension.Address].AutoFitColumns();
                 //workSheet.Row(1).CustomHeight = true;//自动换行
                 workSheet.Column(4).Style.WrapText = true;
-                string filename = String.Format("{0}-{1}-{2}.xlsx", ticket.Date, ticket.Sum.Substring(1), ticket.Company);
+                string filename = String.Format("{0}-{1}-{2}-{3}.xlsx", ticket.Date, 
+                    ticket.Sum.Substring(1), ticket.Number, ticket.Company);
                 //保存Excel文件
                 string filePath = AppPath + filename;
                 Console.WriteLine("save to {0}", filePath);
@@ -109,7 +110,8 @@ namespace Pdf2Excel
             {
                 Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() =>
                 {
-                    MessageBox.Show("添加数据失败，请先关闭"+ ExcelNamed, "提示", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("添加数据失败，请先关闭"+ ExcelNamed, "提示", 
+                        MessageBoxButton.OK, MessageBoxImage.Information);
                 }));
                 return;
             }
